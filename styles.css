@@ -1,86 +1,123 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+*{
+  box-sizing:border-box;
 }
 
-body {
-  height: 100vh;
-  background: #fff;
-  overflow: hidden;
+body{
+  margin:0;
+  background:linear-gradient(to bottom,#f8d7da,#f3e5dc);
+  font-family:'Segoe UI', sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
 }
 
-/* Contenedor principal */
-.container {
-  position: relative;
-  z-index: 2;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* 💻 PC */
+.card{
+  width:900px;
+  height:600px;
+  background:#fff0f3;
+  border-radius:30px;
+  position:relative;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+  overflow:hidden;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-}
-
-/* Botones */
-.buttons {
-  display: flex;
-  gap: 20px;
-}
-
-button {
-  padding: 15px 30px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-#yesBtn {
-  background-color: #4CAF50;
-  color: white;
-}
-
-#yesBtn:hover {
-  transform: scale(1.1);
-}
-
-#noBtn {
-  background-color: #f44336;
-  color: white;
-  position: absolute;
-}
-
-/* Corazones */
-.hearts-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.heart {
-  position: absolute;
-  bottom: -20px;
-  animation: floatUp linear infinite;
-  opacity: 0.8;
-}
-
-@keyframes floatUp {
-  from {
-    transform: translateY(0) scale(1);
+/* 📱 CEL */
+@media (max-width:768px){
+  .card{
+    width:360px;
+    height:640px;
+    border-radius:0;
   }
-  to {
-    transform: translateY(-120vh) scale(1.4);
+}
+
+h1{
+  color:#8b3a3a;
+  font-weight:500;
+  margin-bottom:40px;
+  z-index:2;
+}
+
+.buttons{
+  display:flex;
+  gap:40px;
+  z-index:2;
+}
+
+button{
+  padding:14px 35px;
+  border-radius:30px;
+  border:none;
+  background:#e8b4b8;
+  color:#5c2c2c;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#d68fa1;
+}
+
+/* 💖 Corazones flotando */
+.heart{
+  position:absolute;
+  font-size:20px;
+  animation:floatUp linear infinite;
+  opacity:0.7;
+}
+
+@keyframes floatUp{
+  from{
+    transform:translateY(100%);
   }
+  to{
+    transform:translateY(-120%);
+  }
+}
+
+/* 🎆 Canvas */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+
+/* 📸 Fotos en corazón */
+.photo-heart{
+  position:absolute;
+  width:200px;
+  height:200px;
+  background-size:cover;
+  background-position:center;
+  clip-path:path("M100 30 C100 -10, 0 -10, 0 50 C0 100, 100 170, 100 170 C100 170, 200 100, 200 50 C200 -10,100 -10,100 30 Z");
+  animation:appear 3s forwards;
+}
+
+@keyframes appear{
+  0%{opacity:0; transform:scale(0.5);}
+  50%{opacity:1;}
+  100%{opacity:0; transform:scale(1.2);}
+}
+
+/* 💌 Mensaje gracias */
+.thanks{
+  position:absolute;
+  font-size:50px;
+  color:#c2185b;
+  font-weight:bold;
+  animation:fadeIn 2s forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
 }
